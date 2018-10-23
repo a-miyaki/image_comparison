@@ -45,7 +45,8 @@ def main():
             plt.imshow(out[0:100, 0:100])
             plt.colorbar()
             plt.show()
-
+            
+            print(file_name)
             print(len(arr))
 
 if __name__ == '__main__':
