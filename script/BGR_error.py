@@ -32,5 +32,5 @@ def BGR_error(error_map):
 
     return r, g, b
 
-if __name__ == "__BGR_error__":
+if __name__ == "__main__":
     BGR_error()
