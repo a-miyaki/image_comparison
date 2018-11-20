@@ -5,8 +5,8 @@ import os, sys
 
 def main():
     # ディレクトリ指定
-    files = u"./cell_image/"
-    file_list = os.listdir(r'./cell_image/')
+    files = u"./1106/"
+    file_list = os.listdir(r'./1106/')
 
     # ファイルを読み込む
     for file_name in file_list:
@@ -17,7 +17,7 @@ def main():
             # ファイルのチャネルを分割
             img_ch = cv.split(image)
             # 0,1,2でB,G,Rを表示する # 閾値30で2値化する
-            binimg = (img_ch[0] > 30)
+            binimg = (img_ch[2] > 30)
             binimg = binimg.astype(np.uint8)
             distmap = cv.distanceTransform(binimg, 1, 3)
 
@@ -42,10 +42,10 @@ def main():
                 arr.append([x_ / len(i), y_ / len(i)])
             arr = np.array(arr)
 
-            plt.imshow(out[0:100, 0:100])
+            """plt.imshow(out[0:100, 0:100])
             plt.colorbar()
-            plt.show()
-            
+            plt.show()"""
+
             print(file_name)
             print(len(arr))
 

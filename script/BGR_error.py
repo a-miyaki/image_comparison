@@ -1,29 +1,36 @@
 import numpy as np
 import cv2 as cv
 from PIL import Image
-import matplotlib.pyplot as plt
 
-# 画像読み込み
-img = cv.imread('./result/error_map_diff.png', 1)
+# パスの指定
+path = './image_error_map/'
 
-# 画像を表示
-cv.imshow('frame', img)
-cv.waitKey(0)
-cv.destroyAllWindows()
+def BGR_error(error_map):
+    # 画像読み込み
+    img = Image.open(path + 'error_map_diff.png')
+    pixelSizeTuple = img.size
 
-# RGB値の平均値を求める
-average_color_per_row = np.sum(img, axis=0)
+    redlist = []
+    greenlist = []
+    bluelist = []
 
-average_color = np.sum(average_color_per_row, axis=0)
+    # 各ピクセルのRGBをリスト化する
+    for i in range(pixelSizeTuple[0]):
+        for j in range(pixelSizeTuple[1]):
+            r, g, b = img.getpixel((i, j))
+            redlist.append(r)
+            greenlist.append(g)
+            bluelist.append(b)
 
-average_color = np.uint8(average_color)
-print("BGRの合計")
-print(average_color)
+    r = sum(redlist)
+    g = sum(greenlist)
+    b = sum(bluelist)
+    print('R, G, B')
+    print(r)
+    print(g)
+    print(b)
 
-# numpyの配列をリスト化する
-list = average_color.tolist()
+    return r, g, b
 
-error_of_image = (list[0] + list[1] + list[2]) / 256 / 3 * 100
-# ( B + G + R ) / ( 256 * 3 ) * 100 ( % )
-print("エラー率(%)")
-print(error_of_image)
+if __name__ == "__BGR_error__":
+    BGR_error()

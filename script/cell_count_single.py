@@ -2,10 +2,10 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = cv2.imread('./cell_image/c0008.png', 1)
+img = cv2.imread('./preview/image_gt_00011400.png', 1)
 img_chs = cv2.split(img)
 
-binimg = (img_chs[0] > 40)
+binimg = (img_chs[2] > 40)
 plt.imshow(binimg)
 plt.show()
 binimg = binimg.astype(np.uint8)
