@@ -60,5 +60,5 @@ def Calculation_ROI():
 
     return ROI_list
 
-if __name__ == "__Calculation_ROI__":
+if __name__ == "__main__":
     Calculation_ROI()
