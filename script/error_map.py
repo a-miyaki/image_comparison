@@ -31,5 +31,5 @@ def make_error_map(image_A, image_B):
 
     return error_map
 
-if __name__ == "__make_error_map__":
+if __name__ == "__main__":
     make_error_map()
