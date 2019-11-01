@@ -59,8 +59,8 @@ def record(filename, iter, R, G, B, Rstd, Gstd, Bstd):
 def main():
     print(' Strat calcuration of pixel value error')
     for i in range(1, len(os.listdir(args.path)) / 3):
-        img_a = cv2.imread('{}/image_gen_{:.8f}.png'.format(args.path, i * args.iter), 1)
-        img_b = cv2.imread('{}/image_gt_{:.8f}.png'.format(args.path, i * args.iter), 1)
+        img_a = cv2.imread('{}/image_gen_{0:08d}.png'.format(args.path, i * args.iter), 1)
+        img_b = cv2.imread('{}/image_gt_{0:08d}.png'.format(args.path, i * args.iter), 1)
         
         error_map = make_error_map(img_a, img_b, i * args.iter)
         R, G, B = split_RGB(i * args.iter)
